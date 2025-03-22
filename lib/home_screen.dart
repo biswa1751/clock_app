@@ -1,4 +1,6 @@
+import 'package:animated_analog_clock/animated_analog_clock.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -38,7 +40,47 @@ class HomeScreen extends StatelessWidget {
                         height: 250,
                         width: 250,
                         margin: const EdgeInsets.only(top: 50.0),
-                        color: Colors.green,
+                        child: Stack(
+                          children: [
+                            Center(
+                              child: Padding(
+                                padding: const EdgeInsets.only(bottom: 40.0),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      DateFormat.Hm().format(DateTime.now()),
+                                      style: TextStyle(
+                                        fontSize: 24,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    Text(
+                                      DateFormat(
+                                        'EEE, MMMM d',
+                                      ).format(DateTime.now()),
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            AnimatedAnalogClock(
+                              hourHandColor: Colors.white,
+                              minuteHandColor: Colors.white,
+                              secondHandColor: Colors.white,
+                              minuteDashColor: Colors.transparent,
+                              hourDashColor: Colors.white,
+                              centerDotColor: Colors.white,
+                              dialType: DialType.numberAndDashes,
+                              size: 300,
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
